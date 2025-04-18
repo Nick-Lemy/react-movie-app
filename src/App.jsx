@@ -4,6 +4,7 @@ import Spinner from './components/Spinner';
 import MovieCard from './components/MovieCard';
 import { useDebounce } from 'react-use';
 import { getTrendingMovies, updateSearchCount } from './appwrite';
+import TrendingMovieCard from './components/TrendingMovieCard';
 
 const API_BASE_URL = 'https://api.themoviedb.org/3';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
@@ -80,10 +81,7 @@ function App() {
             <h2 className='text-white'>Trending Movies</h2>
             <ul>
               {trendingMovies.map((movie, index)=>(
-                <li key={movie.$id}>
-                  <p>{index + 1}</p>
-                  <img src={movie.poster_url} alt={movie.title} />
-                </li>
+               <TrendingMovieCard movie={movie} index={index}/>
               ))}
             </ul>
           </section>
